@@ -1,0 +1,19 @@
+# No dóna accés a índex d'arxius de carpetes
+Options All -Indexes 
+
+# Correccions per la url limitades a casos majúscula minúscula
+CheckSpelling On
+CheckCaseOnly On
+ 
+RewriteEngine On
+
+# NO COMPROVEM que no és un directori existent. L'accés a directoris està restringit.
+# RewriteCond %{REQUEST_FILENAME} !-d
+# NO COMPROVEM que és un arxiu existent. Si està en maj no passa la condició.
+# RewriteCond %{REQUEST_FILENAME}.php -f
+# Agafem contingut previ al punt
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+#ErrorDocument 404 error.html
+#ErrorDocument 403 error.html
+#ErrorDocument 5000 error.html
